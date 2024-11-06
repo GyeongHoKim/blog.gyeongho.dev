@@ -2,11 +2,15 @@ import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
+import react from '@astrojs/react'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 
-// https://astro.build/config
+import vercel from '@astrojs/vercel/serverless'
+
 export default defineConfig({
-	site: 'https://blog-template-gray.vercel.app/', // Write here your website url
+	// Write here your website url
+	site: 'https://blog-template-gray.vercel.app/',
+
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 		drafts: true,
@@ -15,19 +19,24 @@ export default defineConfig({
 			wrap: true
 		}
 	},
+
 	integrations: [
 		mdx({
 			syntaxHighlight: 'shiki',
 			shikiConfig: {
 				experimentalThemes: {
 					light: 'vitesse-light',
-					dark: 'material-theme-palenight',
-				  },
+					dark: 'material-theme-palenight'
+				},
 				wrap: true
 			},
 			drafts: true
 		}),
 		sitemap(),
-		tailwind()
-	]
+		tailwind(),
+		react()
+	],
+
+	output: 'server',
+	adapter: vercel()
 })

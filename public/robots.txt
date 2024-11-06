@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://blog-template-gray.vercel.app/sitemap-index.xml
