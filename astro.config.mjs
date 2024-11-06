@@ -33,5 +33,18 @@ export default defineConfig({
 		sitemap(),
 		tailwind(),
 		react()
-	]
+	],
+
+	vite: {
+		resolve: {
+			alias: {
+				'@/components/*': ['src/components/*.astro'],
+				'@/layouts/*': ['src/layouts/*.astro'],
+				'@/utils': ['src/utils/index.ts'],
+				'@/data/*': ['src/data/*'],
+				'@/site-config': ['src/data/site.config.ts'],
+				'@/styles': ['src/styles/']
+			}
+		}
+	}
 })
