@@ -10,7 +10,7 @@ const posts = await getPosts(MAX_POSTS)
 ---
 
 <BaseLayout title='Home'>
-	<TitlePage title='Blog Title' />
+	<TitlePage title='Building Web Experiences' />
 	<ListCategories />
 
 	<div>
@@ -21,6 +21,7 @@ const posts = await getPosts(MAX_POSTS)
 
 <script>
 	import { animate } from 'motion'
+
 	const showAnimations = localStorage.getItem('animations') === 'true'
 
 	if (showAnimations) {
