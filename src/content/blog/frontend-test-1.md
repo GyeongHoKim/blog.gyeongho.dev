@@ -2,7 +2,7 @@
 title: 'Frontend Test 전략 #1'
 description: '무엇을 테스트 할 것인가??'
 pubDate: 'Nov 6 2024'
-heroImage: '../../assets/images/rabbit.webp'
+heroImage: '../../assets/images/pikachu.png'
 category: 'Frontend'
 tags: ['test', 'component']
 ---
