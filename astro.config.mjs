@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import react from '@astrojs/react'
-import { remarkReadingTime } from './src/utils/readTime.ts'
+import { remarkReadingTime } from '@/utils'
 
 export default defineConfig({
 	// Write here your website url
