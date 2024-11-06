@@ -5,11 +5,9 @@ import tailwind from '@astrojs/tailwind'
 import react from '@astrojs/react'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 
-import vercel from '@astrojs/vercel/serverless'
-
 export default defineConfig({
 	// Write here your website url
-	site: 'https://blog-template-gray.vercel.app/',
+	site: 'https://blog.gyeongho.dev/',
 
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
@@ -35,8 +33,5 @@ export default defineConfig({
 		sitemap(),
 		tailwind(),
 		react()
-	],
-
-	output: 'server',
-	adapter: vercel()
+	]
 })
