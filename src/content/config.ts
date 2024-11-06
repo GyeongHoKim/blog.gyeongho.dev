@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content'
-import { CATEGORIES } from '@/data/categories.ts'
+import { CATEGORIES } from '../data/categories.ts'
 
 const blog = defineCollection({
 	// Type-check frontmatter using a schema
