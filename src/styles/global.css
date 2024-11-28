@@ -21,6 +21,10 @@
 		@apply text-zinc-800 dark:text-zinc-100   !important;
 	}
 
+	article h1 {
+		@apply text-3xl font-bold !important;
+	}
+
 	html.dark .shiki,
 	html.dark .shiki span {
 		color: var(--shiki-dark) !important;
