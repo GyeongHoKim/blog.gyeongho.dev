@@ -23,7 +23,7 @@ tags: ['golang', 'net/url']
 
 예를 들어,
 
-```Go
+```go
 package main
 
 import (
@@ -51,7 +51,7 @@ Golang에서 에러를 반환안하니 내가 특수문자 있는지 검사해�
 
 [pull request 내용](https://github.com/GyeongHoKim/vdk/commit/5318f2ad7b388ebbbe1207fa1efa8e617f7dfa4a)
 
-```Go
+```go
 pattern := `[ !#$%&'()*+,/:;=?@\[\]]`
 re := regexp.MustCompile(pattern)
 if re.MatchString(username) || re.MatchString(password) {

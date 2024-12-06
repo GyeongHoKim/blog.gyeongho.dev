@@ -17,7 +17,7 @@ tags: ['golang', 'gin']
 
 `gin.Context`를 handler 내의 고루틴에서 그대로 쓰고 있던게 문제였다. 예를 들어,
 
-```Go
+```go
 func handler(c *gin.Context) {
     go func() {
         // Accessing c.Param inside a goroutine
@@ -32,7 +32,7 @@ func handler(c *gin.Context) {
 
 아래는 gin의 실제 구현코드이다.
 
-```Go
+```go
 // ServeHTTP conforms to the http.Handler interface.
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
     c := engine.pool.Get().(*Context)
@@ -52,14 +52,14 @@ func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 
 해결은 쉽다. 깊게 복사하던가 새로 하나 변수 만들면 된다. 예를 들어,
 
-```Go
+```go
 copiedContext := c.Copy()
 go func() {
   do something
 }()
 ```
 
-```Go
+```go
 deviceId := c.Param("guid")
 go func() {
   do something
