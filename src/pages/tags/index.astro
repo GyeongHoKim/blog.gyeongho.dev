@@ -2,11 +2,14 @@
 import BaseLayout from '@/layouts/BaseLayout'
 import TitlePage from '@/components/TitlePage'
 import { getTags } from '@/utils'
-const tags = await getTags()
+import { getLangFromUrl } from '../../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const tags = await getTags(lang)
 ---
 
-<BaseLayout title='Tags'>
-	<TitlePage title='Tags' />
+<BaseLayout title='태그'>
+	<TitlePage title='태그' />
 	<div class='flex justify-center flex-wrap gap-4'>
 		{
 			tags.map((tag) => (
