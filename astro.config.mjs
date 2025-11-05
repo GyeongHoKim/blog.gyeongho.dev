@@ -9,6 +9,14 @@ export default defineConfig({
 	// Write here your website url
 	site: 'https://blog.gyeongho.dev/',
 
+	i18n: {
+		locales: ['en', 'ko', 'ja'],
+		defaultLocale: 'ko',
+		routing: {
+			prefixDefaultLocale: false
+		}
+	},
+
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 		drafts: true,

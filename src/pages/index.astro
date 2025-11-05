@@ -4,17 +4,19 @@ import ListPosts from '@/components/ListPosts'
 import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
 import { getPosts } from '@/utils'
+import { getLangFromUrl } from '../i18n/utils'
 
-const MAX_POSTS = 5 // max number of posts to show on the home page
-const posts = await getPosts(MAX_POSTS)
+const lang = getLangFromUrl(Astro.url)
+const MAX_POSTS = 5
+const posts = await getPosts(MAX_POSTS, lang)
 ---
 
-<BaseLayout title='Home'>
+<BaseLayout title='홈'>
 	<TitlePage title='Building Web Experiences' />
 	<ListCategories />
 
 	<div>
-		<h2 class='text-lg font-medium tracking-wide text-end'>Latest Posts</h2>
+		<h2 class='text-lg font-medium tracking-wide text-end'>최신 포스트</h2>
 		<ListPosts FirstBig={true} posts={posts} />
 	</div>
 </BaseLayout>

@@ -8,8 +8,8 @@ import { siteConfig } from '@/data/site.config'
 import Pagination from '@/components/Pagination'
 
 export async function getStaticPaths({ paginate }: any) {
-	const categories = await getCategories()
-	const allPosts = await getPosts()
+	const categories = await getCategories('ko')
+	const allPosts = await getPosts(undefined, 'ko')
 
 	return categories.flatMap((category: string) => {
 		const unsluglifyNameCategory = unsluglify(category!.toLowerCase())

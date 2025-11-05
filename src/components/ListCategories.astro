@@ -1,7 +1,10 @@
 ---
 import { getCategories } from '@/utils'
 import Category from '@/components/Category'
-const categories = await getCategories()
+import { getLangFromUrl } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const categories = await getCategories(lang)
 
 const { activeCategory } = Astro.props
 ---

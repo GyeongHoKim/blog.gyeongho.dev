@@ -6,6 +6,12 @@ import MenuIcon from './icons/MenuIcon.astro'
 import Search from '@/components/Search'
 import TagIcon from './icons/TagIcon.astro'
 import ToggleTheme from './ToggleTheme.astro'
+import LanguagePicker from './LanguagePicker.astro'
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const translatePath = useTranslatedPath(lang)
 
 // ADD YOUR SOCIAL NETWORKS HERE
 const SOCIALNETWORKS = [
@@ -18,7 +24,7 @@ const SOCIALNETWORKS = [
 ---
 
 <header class='relative flex items-center h-12 font-semibold'>
-	<a class='text-lg mr-auto' href='/'>Home</a>
+	<a class='text-lg mr-auto' href={translatePath('/')}>{t('nav.home')}</a>
 
 	<div
 		id='astro-header-drawer'
@@ -30,8 +36,12 @@ const SOCIALNETWORKS = [
 			<div
 				class='flex flex-col gap-4 md:flex-row md:border-r-2 border-black pr-4 dark:border-white'
 			>
-				<HeaderLink href='/tags' class='flex items-center gap-1 text-2xl md:text-base'>
-					<TagIcon /> Tags
+				<HeaderLink
+					href={translatePath('/tags')}
+					class='flex items-center gap-1 text-2xl md:text-base'
+				>
+					<TagIcon />
+					{t('nav.tags')}
 				</HeaderLink>
 			</div>
 
@@ -51,6 +61,7 @@ const SOCIALNETWORKS = [
 		<div>
 			<Search />
 		</div>
+		<LanguagePicker />
 		<ToggleTheme />
 		<button id='astro-header-drawer-button' type='button' class='md:ml-6 md:hidden'>
 			<MenuIcon />

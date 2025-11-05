@@ -10,14 +10,17 @@ import SButton from '@/components/mdx/SButton'
 import Disqus from '@/components/Disqus'
 import { disqusConfig } from '@/data/disqus.config'
 
-const posts = await getCollection('blog')
+const posts = await getCollection('blog', ({ data }) => data.lang === 'ko')
 export async function getStaticPaths() {
-	const posts = await getPosts()
+	const posts = await getPosts(undefined, 'ko')
 
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post
-	}))
+	return posts.map((post) => {
+		const slug = post.slug.replace(/^ko\//, '')
+		return {
+			params: { slug },
+			props: post
+		}
+	})
 }
 type Props = CollectionEntry<'blog'>
 
@@ -61,7 +64,7 @@ const disqusEnabled = disqusConfig.enabled
 
 			<!-- related posts -->
 			<footer>
-				<h2 class='font-bold text-lg dark:text-white mb-6'>Related Posts</h2>
+				<h2 class='font-bold text-lg dark:text-white mb-6'>관련 글</h2>
 				<ListRelatedPosts posts={relatedPosts} />
 			</footer>
 		</article>

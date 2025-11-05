@@ -1,0 +1,25 @@
+---
+import BaseLayout from '@/layouts/BaseLayout'
+import TitlePage from '@/components/TitlePage'
+import { getTags } from '@/utils'
+import { getLangFromUrl } from '../../../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const tags = await getTags(lang)
+---
+
+<BaseLayout title='Tags'>
+	<TitlePage title='Tags' />
+	<div class='flex justify-center flex-wrap gap-4'>
+		{
+			tags.map((tag) => (
+				<a
+					href={`/en/tags/${tag}`}
+					class='inline-block bg-gray-200  rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
+				>
+					#{tag}
+				</a>
+			))
+		}
+	</div>
+</BaseLayout>
