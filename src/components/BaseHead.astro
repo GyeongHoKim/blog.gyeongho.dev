@@ -2,6 +2,7 @@
 import { siteConfig } from '@/site-config'
 import '../styles/global.css'
 import { ViewTransitions } from 'astro:transitions'
+import SpeedInsights from '@vercel/speed-insights/astro'
 
 export interface Props {
 	title: string
@@ -115,3 +116,5 @@ import { AstroFont } from 'astro-font'
 		}
 	]}
 />
+
+<SpeedInsights />
